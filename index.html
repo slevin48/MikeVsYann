@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mike vs Yann - Who's the Boss?</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap"
+    />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #0d1117;
+        --fg: #f0f6fc;
+        --accent-mike: #2ecc71;
+        --accent-yann: #e74c3c;
+        --card-bg: rgba(255, 255, 255, 0.08);
+        --card-border: rgba(255, 255, 255, 0.16);
+        --shadow: 0 20px 45px rgba(15, 23, 42, 0.45);
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Open Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        background: radial-gradient(circle at top, rgba(46, 204, 113, 0.18), transparent 55%),
+          radial-gradient(circle at bottom, rgba(231, 76, 60, 0.18), transparent 60%),
+          var(--bg);
+        color: var(--fg);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 3rem 1.5rem 4rem;
+      }
+
+      header {
+        text-align: center;
+        max-width: 800px;
+      }
+
+      h1 {
+        font-family: "Montserrat", sans-serif;
+        font-size: clamp(2.5rem, 4vw, 3.25rem);
+        letter-spacing: 0.05em;
+        margin: 0 0 0.5rem;
+        text-transform: uppercase;
+      }
+
+      .boss-name {
+        font-size: clamp(3rem, 5vw, 3.8rem);
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+        text-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+      }
+
+      .boss-subtitle {
+        font-size: 1rem;
+        opacity: 0.8;
+        letter-spacing: 0.1em;
+      }
+
+      .score-card {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1.25rem 1.5rem;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        min-width: min(700px, 100%);
+        transition: transform 0.3s ease;
+      }
+
+      .score-card:hover {
+        transform: translateY(-4px);
+      }
+
+      .score {
+        flex: 1 1 230px;
+        display: grid;
+        gap: 0.35rem;
+        padding: 1rem 1.25rem;
+        border-radius: 14px;
+        background: rgba(0, 0, 0, 0.2);
+      }
+
+      .score h2 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.3rem;
+        letter-spacing: 0.08em;
+        margin: 0;
+        text-transform: uppercase;
+      }
+
+      .score .value {
+        font-size: clamp(2rem, 4vw, 2.6rem);
+        font-weight: 700;
+      }
+
+      .score .delta {
+        font-size: 0.9rem;
+        opacity: 0.75;
+      }
+
+      .note {
+        opacity: 0.7;
+        font-size: 0.95rem;
+        margin-top: 0.5rem;
+        text-align: center;
+      }
+
+      canvas {
+        width: min(960px, 100%);
+        max-width: 960px;
+        background: rgba(13, 17, 23, 0.6);
+        border-radius: 20px;
+        padding: 1rem 1.5rem 1.5rem;
+        box-shadow: var(--shadow);
+      }
+
+      footer {
+        font-size: 0.85rem;
+        opacity: 0.55;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+    <script defer src="./viewer.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="boss-name" id="bossName">Determining the boss…</div>
+      <div class="boss-subtitle" id="bossSubtitle">Fetching battle stats…</div>
+    </header>
+
+    <section class="score-card" aria-live="polite">
+      <article class="score" id="mikeScore">
+        <h2>Mike</h2>
+        <div class="value" data-role="value">–</div>
+        <div class="delta" data-role="delta">Awaiting numbers…</div>
+      </article>
+      <article class="score" id="yannScore">
+        <h2>Yann (–200 handicap)</h2>
+        <div class="value" data-role="value">–</div>
+        <div class="delta" data-role="delta">Awaiting numbers…</div>
+      </article>
+    </section>
+
+    <p class="note" id="lastUpdated">Data updates every day via GitHub Actions.</p>
+
+    <canvas id="viewsChart" aria-label="Daily view counts for Mike and Yann" role="img"></canvas>
+
+    <footer>
+      Mike vs Yann • Powered by open MathWorks blog stats &amp; GitHub Actions.
+    </footer>
+  </body>
+</html>
