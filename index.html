@@ -114,7 +114,7 @@
         text-align: center;
       }
 
-      canvas {
+      #viewsChart {
         width: min(960px, 100%);
         max-width: 960px;
         background: rgba(13, 17, 23, 0.6);
@@ -128,7 +128,7 @@
         opacity: 0.55;
       }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" defer></script>
     <script defer src="./viewer.js"></script>
   </head>
   <body>
@@ -152,7 +152,7 @@
 
     <p class="note" id="lastUpdated">Data updates every day via GitHub Actions.</p>
 
-    <canvas id="viewsChart" aria-label="Daily view counts for Mike and Yann" role="img"></canvas>
+    <div id="viewsChart" aria-label="Daily view counts for Mike and Yann" role="img"></div>
 
     <footer>
       Mike vs Yann • Powered by open MathWorks blog stats &amp; GitHub Actions.
