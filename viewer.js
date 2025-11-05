@@ -66,6 +66,17 @@
   }
 
   const ctx = document.getElementById("viewsChart");
+  if (!window.Chart) {
+    const fallbackMessage = document.createElement("p");
+    fallbackMessage.textContent =
+      "We couldn't load the chart library. Please refresh the page once your connection allows local assets to load.";
+    fallbackMessage.setAttribute("role", "status");
+    fallbackMessage.style.marginTop = "1.5rem";
+    fallbackMessage.style.textAlign = "center";
+    ctx.replaceWith(fallbackMessage);
+    console.error("Chart.js failed to initialize");
+    return;
+  }
   const chart = new window.Chart(ctx, {
     type: "line",
     data: {
