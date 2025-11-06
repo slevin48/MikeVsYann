@@ -97,6 +97,16 @@
         text-transform: uppercase;
       }
 
+      .score h2 a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .score h2 a:hover,
+      .score h2 a:focus {
+        text-decoration: underline;
+      }
+
       .score .value {
         font-size: clamp(2rem, 4vw, 2.6rem);
         font-weight: 700;
@@ -139,12 +149,21 @@
 
     <section class="score-card" aria-live="polite">
       <article class="score" id="mikeScore">
-        <h2>Mike</h2>
+        <h2>
+          <a href="https://blogs.mathworks.com/matlab/?p=4045" target="_blank" rel="noopener noreferrer"
+            >Mike</a
+          >
+        </h2>
         <div class="value" data-role="value">–</div>
         <div class="delta" data-role="delta">Awaiting numbers…</div>
       </article>
       <article class="score" id="yannScore">
-        <h2>Yann (–200 handicap)</h2>
+        <h2>
+          <a href="https://blogs.mathworks.com/ai/?p=18818" target="_blank" rel="noopener noreferrer"
+            >Yann</a
+          >
+          (–200 handicap)
+        </h2>
         <div class="value" data-role="value">–</div>
         <div class="delta" data-role="delta">Awaiting numbers…</div>
       </article>
